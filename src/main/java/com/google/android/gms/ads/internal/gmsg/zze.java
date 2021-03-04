@@ -1,0 +1,68 @@
+package com.google.android.gms.ads.internal.gmsg;
+
+import android.text.TextUtils;
+import com.google.android.gms.ads.internal.zzbv;
+import com.google.android.gms.internal.ads.zzaba;
+import com.google.android.gms.internal.ads.zzark;
+import com.google.android.gms.internal.ads.zzaxz;
+import com.google.android.gms.internal.ads.zzbgg;
+import com.google.android.gms.measurement.AppMeasurement;
+import com.google.android.gms.measurement.api.AppMeasurementSdk;
+import java.util.Map;
+
+@zzark
+public final class zze implements zzu<zzbgg> {
+    /* JADX DEBUG: Method arguments types fixed to match base method, original types: [java.lang.Object, java.util.Map] */
+    @Override // com.google.android.gms.ads.internal.gmsg.zzu
+    public final /* synthetic */ void zza(zzbgg zzbgg, Map map) {
+        zzbgg zzbgg2 = zzbgg;
+        String str = (String) map.get("action");
+        if ("tick".equals(str)) {
+            String str2 = (String) map.get("label");
+            String str3 = (String) map.get("start_label");
+            String str4 = (String) map.get(AppMeasurement.Param.TIMESTAMP);
+            if (TextUtils.isEmpty(str2)) {
+                zzaxz.zzeo("No label given for CSI tick.");
+            } else if (TextUtils.isEmpty(str4)) {
+                zzaxz.zzeo("No timestamp given for CSI tick.");
+            } else {
+                try {
+                    long elapsedRealtime = zzbv.zzlm().elapsedRealtime() + (Long.parseLong(str4) - zzbv.zzlm().currentTimeMillis());
+                    if (TextUtils.isEmpty(str3)) {
+                        str3 = "native:view_load";
+                    }
+                    zzbgg2.zzaby().zzb(str2, str3, elapsedRealtime);
+                } catch (NumberFormatException e) {
+                    zzaxz.zzc("Malformed timestamp for CSI tick.", e);
+                }
+            }
+        } else if ("experiment".equals(str)) {
+            String str5 = (String) map.get("value");
+            if (TextUtils.isEmpty(str5)) {
+                zzaxz.zzeo("No value given for CSI experiment.");
+                return;
+            }
+            zzaba zzrf = zzbgg2.zzaby().zzrf();
+            if (zzrf == null) {
+                zzaxz.zzeo("No ticker for WebView, dropping experiment ID.");
+            } else {
+                zzrf.zzg("e", str5);
+            }
+        } else if ("extra".equals(str)) {
+            String str6 = (String) map.get(AppMeasurementSdk.ConditionalUserProperty.NAME);
+            String str7 = (String) map.get("value");
+            if (TextUtils.isEmpty(str7)) {
+                zzaxz.zzeo("No value given for CSI extra.");
+            } else if (TextUtils.isEmpty(str6)) {
+                zzaxz.zzeo("No name given for CSI extra.");
+            } else {
+                zzaba zzrf2 = zzbgg2.zzaby().zzrf();
+                if (zzrf2 == null) {
+                    zzaxz.zzeo("No ticker for WebView, dropping extra parameter.");
+                } else {
+                    zzrf2.zzg(str6, str7);
+                }
+            }
+        }
+    }
+}

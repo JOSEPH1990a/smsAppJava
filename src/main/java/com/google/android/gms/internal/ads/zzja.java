@@ -1,0 +1,10 @@
+package com.google.android.gms.internal.ads;
+
+/* access modifiers changed from: package-private */
+public interface zzja {
+    int zzef();
+
+    int zzeg();
+
+    boolean zzeh();
+}

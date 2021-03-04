@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/rl_custom_layout" android:background="#8e8e8f" android:padding="2dp" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageButton android:id="@+id/ib_close" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@android:drawable/ic_menu_close_clear_cancel" android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
+    <EditText android:textColor="#fff" android:textColorHint="#fff" android:id="@+id/usernameEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Username" android:layout_below="@+id/ib_close"/>
+    <EditText android:textColor="#fff" android:textColorHint="#fff" android:id="@+id/passwordEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Password" android:layout_below="@+id/usernameEdit"/>
+    <CheckBox android:textColor="#fff" android:textColorHint="#fff" android:id="@+id/isCheckedEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Enable" android:layout_below="@+id/passwordEdit"/>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="2" android:layout_below="@+id/isCheckedEdit">
+        <Button android:textColor="#fff" android:id="@+id/updateUserButton" android:background="@drawable/rectange_button_shap" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="1dp" android:text="UPDATE" android:layout_weight="1"/>
+        <Button android:textColor="#fff" android:id="@+id/deleteUserButton" android:background="@drawable/rectange_button_shap" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="1dp" android:text="DELETE" android:layout_weight="1" android:layout_below="@+id/isCheckedEdit"/>
+    </LinearLayout>
+</RelativeLayout>

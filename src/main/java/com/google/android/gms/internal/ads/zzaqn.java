@@ -1,0 +1,19 @@
+package com.google.android.gms.internal.ads;
+
+import android.view.ViewTreeObserver;
+import java.lang.ref.WeakReference;
+
+/* access modifiers changed from: package-private */
+public final class zzaqn implements ViewTreeObserver.OnGlobalLayoutListener {
+    private final /* synthetic */ zzaqf zzdur;
+    private final /* synthetic */ WeakReference zzdus;
+
+    zzaqn(zzaqf zzaqf, WeakReference weakReference) {
+        this.zzdur = zzaqf;
+        this.zzdus = weakReference;
+    }
+
+    public final void onGlobalLayout() {
+        this.zzdur.zza((zzaqf) this.zzdus, (WeakReference) false);
+    }
+}

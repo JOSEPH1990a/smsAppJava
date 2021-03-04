@@ -1,0 +1,23 @@
+package com.google.android.gms.internal.ads;
+
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+
+/* access modifiers changed from: package-private */
+@TargetApi(23)
+public final class zzqr implements MediaCodec.OnFrameRenderedListener {
+    private final /* synthetic */ zzqo zzbjx;
+
+    private zzqr(zzqo zzqo, MediaCodec mediaCodec) {
+        this.zzbjx = zzqo;
+        mediaCodec.setOnFrameRenderedListener(this, new Handler());
+    }
+
+    public final void onFrameRendered(@NonNull MediaCodec mediaCodec, long j, long j2) {
+        if (this == this.zzbjx.zzbjt) {
+            this.zzbjx.zzhq();
+        }
+    }
+}
